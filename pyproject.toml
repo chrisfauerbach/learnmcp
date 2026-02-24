@@ -8,9 +8,16 @@ dependencies = [
     "redis>=5.0",
 ]
 
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
 [build-system]
 requires = ["setuptools>=75.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
