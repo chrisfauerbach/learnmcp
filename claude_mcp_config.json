@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "knowledge-base": {
+      "command": "docker",
+      "args": [
+        "compose",
+        "-f", "/home/cf/learnmcp/docker-compose.yml",
+        "run", "--rm", "-i",
+        "mcp-server"
+      ]
+    }
+  }
+}

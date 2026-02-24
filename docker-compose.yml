@@ -1,0 +1,21 @@
+services:
+  redis:
+    image: redis/redis-stack:latest
+    ports:
+      - "6379:6379"
+      - "8002:8001"   # RedisInsight UI (remapped to 8002)
+    volumes:
+      - redis-data:/data
+
+  mcp-server:
+    build: .
+    depends_on:
+      - redis
+    environment:
+      REDIS_URL: redis://redis:6379
+    stdin_open: true
+    profiles:
+      - mcp    # not started by `docker compose up`, only via `docker compose run`
+
+volumes:
+  redis-data:
